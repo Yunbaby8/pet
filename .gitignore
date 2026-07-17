@@ -1,0 +1,16 @@
+# Build output and IDE state
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Local publish output and bundled SDK
+dist/
+tools/
+
+# Local workspace metadata and private source photo
+.agents/
+.codex/
+桌宠.png
+*.log

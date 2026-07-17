@@ -1,0 +1,32 @@
+<Window x:Class="DesktopPet.App.PetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DesktopPet"
+        Width="260"
+        Height="330"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Topmost="True"
+        WindowStartupLocation="Manual"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        MouseLeftButtonDown="OnMouseLeftButtonDown">
+    <Grid Background="Transparent">
+        <Image x:Name="PetImage"
+               Margin="8"
+               Stretch="Uniform"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               RenderTransformOrigin="0.5,0.75"
+               AutomationProperties.Name="桌宠">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                    <TranslateTransform Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+    </Grid>
+</Window>
