@@ -35,3 +35,8 @@ Windows 11 x64 桌宠。功能范围以 `PROJECT_DESIGN.md` 为准。
     dotnet publish src/DesktopPet.App/DesktopPet.App.csproj -c Release -r win-x64 --self-contained true -o dist/DesktopPet-v0.0.1-win-x64
 
 `dist/` 是本地发布输出，不提交到 Code 页面。正式版本将完整发布目录压缩为 ZIP，并单独上传到 GitHub Releases。
+本地最终发布归档统一保存在：
+
+    releases/v版本号/DesktopPet-v版本号-win-x64.zip
+
+v0.0.1 的 ZIP 和 SHA-256 校验文件位于 `releases/v0.0.1/`。`releases/` 不提交到 Code 页面。

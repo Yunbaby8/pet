@@ -7,6 +7,7 @@
 
 # Local publish output and bundled SDK
 dist/
+releases/
 tools/
 
 # Local workspace metadata and private source photo

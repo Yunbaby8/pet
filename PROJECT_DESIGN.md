@@ -187,10 +187,23 @@ v0.0.1 使用用户提供的一张临时桌宠图片，源码路径为：
 - `桌宠/` 根目录是 Git 源码仓库，默认分支为 `main`。
 - GitHub 远端仓库为 `https://github.com/Yunbaby8/pet.git`，本地远端名称为 `origin`。
 - Git 仓库只提交解决方案、源代码、项目配置、设计文档、README、`.gitignore` 和程序运行必需的桌宠素材。
-- `dist/`、`tools/`、`bin/`、`obj/`、`.vs/`、`.agents/`、`.codex/`、日志和用户原始照片只保留在本机，不进入源码仓库。
+- `dist/`、`releases/`、`tools/`、`bin/`、`obj/`、`.vs/`、`.agents/`、`.codex/`、日志和用户原始照片只保留在本机，不进入源码仓库。
 - 普通 `git push` 更新 GitHub Code 页面。
 - Windows 自包含发布目录不提交到 Code 页面；正式版本将整个发布目录压缩为 `DesktopPet-v版本号-win-x64.zip`，单独上传到 GitHub Releases 页面。
 - Release 附件必须包含 EXE、DLL 和 `Assets` 等完整运行文件，不能只上传或分发单个 `DesktopPet.exe`。
+### 10.2 本地发布目录
+
+    dist/
+    └─ DesktopPet-v0.0.1-win-x64/          未压缩的自包含发布目录
+
+    releases/
+    └─ v0.0.1/
+       ├─ DesktopPet-v0.0.1-win-x64.zip    上传到 GitHub Release 的完整发布包
+       └─ SHA256SUMS.txt                    ZIP 的 SHA-256 校验值
+
+- `dist/` 用于保存编译和发布过程产生的未压缩文件。
+- `releases/` 按版本号建立子目录，只保存最终 ZIP 和对应校验文件。
+- 每个发布 ZIP 必须在生成后验证包含 `DesktopPet.exe`、DLL 和 `Assets/DefaultPet/pet.png`。
 ## 11. v0.0.1 验收标准
 
 1. 程序可以在 Windows 11 x64 上启动。
@@ -254,12 +267,14 @@ v0.0.1 使用用户提供的一张临时桌宠图片，源码路径为：
 - 使用用户照片生成临时透明桌宠资源 `src/DesktopPet.App/Assets/DefaultPet/pet.png`，并支持通过同名透明 PNG 直接替换图案。
 - 生成 Windows x64 自包含绿色版，无需另外安装 .NET 运行环境。
 - 将项目根目录整理为 Git 源码仓库；源码进入 Code 页面，完整发布 ZIP 单独进入 Releases 页面。
+- v0.0.1 完整发布目录已压缩为 `releases/v0.0.1/DesktopPet-v0.0.1-win-x64.zip`，并生成 SHA-256 校验文件。
 - Release 编译、代码格式检查、功能验证和性能验证均已通过。
 
 ## 15. 文档变更记录
 
 | 日期 | 版本 | 变更内容 |
 | --- | --- | --- |
+| 2026-07-17 | v0.0.1 发布归档 | 建立统一的 `releases/v版本号/` 本地归档结构；生成并验证 v0.0.1 完整 ZIP 和 SHA-256 校验文件 |
 | 2026-07-17 | 远端仓库 | GitHub 远端仓库为 `https://github.com/Yunbaby8/pet.git`，使用 `origin` 作为本地远端名称；当前网络使用 HTTPS 进行拉取和推送 |
 | 2026-07-17 | 仓库整理 | 项目根目录整理为 `main` 分支 Git 源码仓库；构建缓存、本地 SDK、发布成品和原始照片不进入 Code 页面，正式发布 ZIP 单独进入 Releases 页面 |
 | 2026-07-17 | 版本记录约定 | 每完成一个版本，必须在“版本改动说明”中追加该版本实际完成并交付的改动；已补充 v0.0.1 版本说明 |
