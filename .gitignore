@@ -10,6 +10,10 @@ dist/
 releases/
 tools/
 
+# Local artwork candidates and historical asset backups
+artwork/
+备用素材库/
+
 # Local workspace metadata and private source photo
 .agents/
 .codex/

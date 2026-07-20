@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="DesktopPet"
-        Width="260"
-        Height="330"
+        Width="104"
+        Height="132"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStyle="None"
@@ -16,9 +16,9 @@
         MouseLeftButtonDown="OnMouseLeftButtonDown">
     <Grid Background="Transparent">
         <Image x:Name="PetImage"
-               Margin="8"
+               Margin="3.2"
                Stretch="Uniform"
-               RenderOptions.BitmapScalingMode="HighQuality"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"
                RenderTransformOrigin="0.5,0.75"
                AutomationProperties.Name="桌宠">
             <Image.RenderTransform>

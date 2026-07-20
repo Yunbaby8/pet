@@ -18,15 +18,24 @@ public sealed class IdleAnimationController : IDisposable
     {
         ArgumentNullException.ThrowIfNull(target);
 
-        string assetPath = Path.Combine(
+        string replaceableAssetPath = Path.Combine(
+            AppContext.BaseDirectory,
+            "可替换桌宠",
+            "pet.png");
+
+        string fallbackAssetPath = Path.Combine(
             AppContext.BaseDirectory,
             "Assets",
             "DefaultPet",
             "pet.png");
 
+        string assetPath = File.Exists(replaceableAssetPath)
+            ? replaceableAssetPath
+            : fallbackAssetPath;
+
         if (!File.Exists(assetPath))
         {
-            throw new FileNotFoundException("找不到桌宠图片 Assets\\DefaultPet\\pet.png。", assetPath);
+            throw new FileNotFoundException("找不到桌宠图片。请将 pet.png 放入可替换桌宠文件夹。", assetPath);
         }
 
         target.Source = LoadImage(assetPath);
@@ -87,7 +96,7 @@ public sealed class IdleAnimationController : IDisposable
 
         AddAnimation(target, "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)", 1.0, 1.02, duration, easing);
         AddAnimation(target, "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)", 1.0, 1.02, duration, easing);
-        AddAnimation(target, "(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)", 0.0, -5.0, duration, easing);
+        AddAnimation(target, "(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)", 0.0, -2.0, duration, easing);
     }
 
     private void AddAnimation(
@@ -115,7 +124,7 @@ public sealed class IdleAnimationController : IDisposable
         var image = new BitmapImage();
         image.BeginInit();
         image.CacheOption = BitmapCacheOption.OnLoad;
-        image.DecodePixelWidth = 260;
+        image.DecodePixelWidth = 104;
         image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
         image.UriSource = new Uri(path, UriKind.Absolute);
         image.EndInit();
